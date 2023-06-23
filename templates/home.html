@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #F7F7F7;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .form-group {
+            margin-bottom: 20px; /* Increased margin */
+        }
+
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            color: #333333;
+            margin-bottom: 10px; /* Added space below headings */
+        }
+
+        .form-group input[type="number"] {
+            width: 95%; /* Reduced input field width */
+            padding: 8px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .results {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        /* Additional Styling */
+        body {
+            background-color: #EFEFEF;
+        }
+
+        .container {
+            background-color: #F8F8F8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Diabetes Prediction</h1>
+        <form action="{{ url_for('predict_datapoint')}}" method="post">
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Other">Other</option>
+                    </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" step="any"
+                    placeholder="Enter Age" required />
+            </div>
+            <div class="form-group">
+                <label for="hypertension">Hypertension</label>
+                <select id="hypertension" name="hypertension" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="heart_disease">Heart Disease</label>
+                <select id="heart_disease" name="heart_disease" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="smoking_history">Smoking History</label>
+                <select id="smoking_history" name="smoking_history" required>
+                        <option value="never">never</option>
+                        <option value="No Info">No Info</option>
+                        <option value="current">current</option>
+                        <option value="former">former</option>
+                        <option value="ever">ever</option>
+                        <option value="not current">not current</option>
+                    </select>
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI</label>
+                <input type="number" id="bmi" name="bmi" step="any"
+                    placeholder="Enter BMI" required />
+            </div>
+            <div class="form-group">
+                <label for="HbA1c_level">Glycated Hemoglobin Level</label>
+                <input type="number" id="HbA1c_level" name="HbA1c_level" step="any"
+                    placeholder="Enter Glycated Hemoglobin Level" required />
+            </div>
+            <div class="form-group">
+            <label for="blood_glucose_level">Blood Glucose Level</label>
+            <input type="number" id="blood_glucose_level" name="blood_glucose_level" step="any"
+                placeholder="Enter Blood Glucose Level" required />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Results" required />
+            </div>
+        </form>
+        <div class="results">
+            <p>Results: {{ results }}</p>
+        </div>
+    </div>
+</body>
+</html>

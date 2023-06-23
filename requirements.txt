@@ -1,0 +1,10 @@
+numpy==1.23.5
+pandas
+scikit-learn
+smote
+xgboost
+pickle-mixin
+imblearn
+Flask
+catboost
+# -e .
